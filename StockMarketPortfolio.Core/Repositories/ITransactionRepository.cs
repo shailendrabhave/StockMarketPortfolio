@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockMarketPortfolio.Core.Repositories
 {
-    public interface IPortfolioRepository
+    public interface ITransactionRepository
     {
     }
 }

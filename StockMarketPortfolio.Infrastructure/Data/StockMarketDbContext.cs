@@ -9,6 +9,11 @@ namespace StockMarketPortfolio.Infrastructure.Data
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost;Database=StockMarketDb;User Id=sa;Password=sa;TrustServerCertificate=True;");
+        }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<EntityBase>())
@@ -31,7 +36,8 @@ namespace StockMarketPortfolio.Infrastructure.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        public DbSet<Portfolio> Portfolios { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Watchlist> Watchlists { get; set; }
+        public DbSet<WatchlistStock> WatchlistStocks { get; set; }
     }
 }
